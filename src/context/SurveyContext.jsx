@@ -48,6 +48,7 @@ export function SurveyProvider({ children }) {
     setContent((prev) => {
       const questions = prev.questions.map((q, i) => {
         if (i !== qIndex) return q;
+         if (q.options.length >= 10) return q;
         return { ...q, options: [...q.options, createOption(q.options.length + 1)] };
       });
       return { ...prev, questions };
